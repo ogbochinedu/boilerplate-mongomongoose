@@ -73,9 +73,18 @@ const findPersonById = (personId, done) => {
 };
 
 const findEditThenSave = (personId, done) => {
-  const foodToAdd = "hamburger";
+  Person.findById(personId, (err, person) => {
+    if (err) return done(err);
 
-  done(null /*, data*/);
+    person.favoriteFoods.push("hamburger");
+    // If favoriteFoods is declared as Mixed type in your Schema
+    // person.markModified('favoriteFoods');
+
+    person.save((err, updatedPerson) => {
+      if (err) return done(err);
+      done(null, updatedPerson);
+    });
+  });
 };
 
 const findAndUpdate = (personName, done) => {
