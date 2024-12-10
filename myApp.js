@@ -50,10 +50,10 @@ const createManyPeople = (arrayOfPeople, done) => {
   });
 };
 
-createManyPeople(arrayOfPeople, (err, data) => {
-  if (err) console.error(err);
-  console.log(data);
-});
+// createManyPeople(arrayOfPeople, (err, data) => {
+//   if (err) console.error(err);
+//   console.log(data);
+// });
 
 const findPeopleByName = (personName, done) => {
   done(null /*, data*/);
