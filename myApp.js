@@ -8,6 +8,14 @@ mongoose.connect(process.env.MONGO_URI, {
 })
 .then(() => console.log("Connected to MongoDB Atlas"))
 .catch((error) => console.error("Connection error:", error));
+
+const personSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  age: { type: Number },
+  favoriteFoods: [{ type: String }]
+});
+
+Person = mongoose.model('Person', personSchema);
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
 };
